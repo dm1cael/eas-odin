@@ -26,8 +26,6 @@ createGrid(16);
 
 /* End Grid Creation */
 
-const drawables = document.querySelectorAll('.drawable');
-
 function registerDrawableEvent() {
     const drawableItem = document.querySelectorAll('.drawable-item');
 
