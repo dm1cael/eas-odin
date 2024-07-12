@@ -1,3 +1,6 @@
+let mode = 'black';
+/* End Game Variables */
+
 const boardContainer = document.querySelector('.board-container');
 
 function createGrid(size) {
@@ -30,12 +33,26 @@ function registerDrawableEvent() {
     const drawableItem = document.querySelectorAll('.drawable-item');
 
     drawableItem.forEach((item) => {
-        item.addEventListener('mouseover', () => {
-            const r = Math.floor(Math.random() * 256);
-            const g = Math.floor(Math.random() * 256);
-            const b = Math.floor(Math.random() * 256);
+        item.style.opacity = 1;
 
-            item.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+        item.addEventListener('mouseover', () => {
+            if(item.style.backgroundColor != 'white' && item.style.opacity > 0 && mode == 'bright') {
+                item.style.opacity -= 0.1;
+            }
+
+            if(mode != 'bright') {
+                item.style.opacity = 1;
+            }
+
+            if(mode == 'rainbow') {
+                const r = Math.floor(Math.random() * 256);
+                const g = Math.floor(Math.random() * 256);
+                const b = Math.floor(Math.random() * 256);
+
+                item.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+            } else {
+                item.style.backgroundColor = `black`;
+            }
         })
     });   
 }
@@ -44,7 +61,23 @@ registerDrawableEvent();
 
 /* End Drawable Interaction */
 
+const defaultBtn = document.querySelector('#default-btn');
+const rainbowBtn = document.querySelector('#rainbow-btn')
+const brighterBtn = document.querySelector('#brighter-btn');
 const sizeBtn = document.querySelector("#size-btn");
+
+defaultBtn.addEventListener('click', () => {
+    mode = 'black';
+})
+
+rainbowBtn.addEventListener('click', () => {
+    mode = 'rainbow';
+})
+
+brighterBtn.addEventListener('click', () => {
+    mode = 'bright';
+})
+
 sizeBtn.addEventListener('click', () => resizeGrid());
 
 function resizeGrid() {
