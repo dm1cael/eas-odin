@@ -40,17 +40,14 @@ function registerDrawableEvent() {
                 item.style.opacity -= 0.1;
             }
 
-            if(mode != 'bright') {
-                item.style.opacity = 1;
-            }
-
             if(mode == 'rainbow') {
                 const r = Math.floor(Math.random() * 256);
                 const g = Math.floor(Math.random() * 256);
                 const b = Math.floor(Math.random() * 256);
 
                 item.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
-            } else {
+            } else if(mode != 'bright') {
+                item.style.opacity = 1;
                 item.style.backgroundColor = `black`;
             }
         })
