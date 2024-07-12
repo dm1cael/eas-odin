@@ -11,3 +11,34 @@ body {
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
     min-height: 100vh;
 }
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 1em;
+    min-height: 100vh;
+}
+
+.board-container {
+    display: flex;
+    flex-direction: column;
+
+    max-width: 520px;
+    max-height: 520px;
+
+    border: 1px solid black;
+}
+
+.button {
+    padding: 1em;
+    background-color: wheat;
+    border-radius: 8px;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: antiquewhite;
+}
